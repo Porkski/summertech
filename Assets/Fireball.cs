@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Fireball : MonoBehaviour
 {
+
+    AudioSource audioData;
     Animator animator;
     // Start is called before the first frame update
     void Start()
     {
+        audioData = GetComponent<AudioSource>();
         
-        //transform.rotation = Quaternion.LookRotation(directionVector);
         animator = GetComponent<Animator>();
     }
 
@@ -24,7 +26,7 @@ public class Fireball : MonoBehaviour
     void OnTriggerEnter2D(Collider2D call){
          if(call.gameObject.tag != "Player"){
 
-        
+        audioData.Play(0);
         animator.Play("exploding");
         
          }

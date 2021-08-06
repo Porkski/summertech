@@ -6,13 +6,14 @@ public class Shoot : MonoBehaviour
 {
 
     public GameObject button;
-
+     AudioSource audioData;
     private bool canShoot = true;
     Rigidbody2D rb;
     public GameObject proj;
     // Start is called before the first frame update
     void Start()
     {
+        audioData = GetComponent<AudioSource>();
         button = GameObject.Find("Torture Dummy");
              }
 
@@ -37,7 +38,7 @@ public class Shoot : MonoBehaviour
             float angle = Mathf.Atan2(rb.velocity.y,rb.velocity.x) * Mathf.Rad2Deg;
             Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
             newProj.transform.rotation = q;
-
+            audioData.Play(0);
 
             canShoot=false;
             StartCoroutine("wait1");
